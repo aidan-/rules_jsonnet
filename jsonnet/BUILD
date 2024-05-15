@@ -39,10 +39,18 @@ config_setting(
     },
 )
 
+config_setting(
+    name = "port_scala",
+    define_values = {
+        "jsonnet_port": "scala",
+    },
+)
+
 alias(
     name = "jsonnet_tool",
     actual = select({
         "//jsonnet:port_cpp": "@jsonnet//cmd:jsonnet",
+        "//jsonnet:port_scala": "//tools/sjsonnet:sjsonnet_bin",
         "//conditions:default": "@google_jsonnet_go//cmd/jsonnet",
     }),
     visibility = ["//visibility:public"],

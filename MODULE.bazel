@@ -7,3 +7,12 @@ module(
 bazel_dep(name = "bazel_skylib", version = "1.5.0")
 bazel_dep(name = "jsonnet", version = "0.20.0")
 bazel_dep(name = "jsonnet_go", version = "0.20.0", repo_name = "google_jsonnet_go")
+
+http_jar = use_repo_rule("@bazel_tools//tools/build_defs/repo:http.bzl", "http_jar")
+http_jar(
+    name = "sjsonnet",
+    url = "https://github.com/databricks/sjsonnet/releases/download/0.4.10/sjsonnet-0.4.10.jar",
+    sha256 = "cca96687e8d79b6df1efc08ac276bc7c61cdab3896b8f8a949b5933d40800eb6",
+)
+
+local_path_override(module_name = "sjsonnet", path = "tools/sjsonnet")

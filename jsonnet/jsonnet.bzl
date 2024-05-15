@@ -26,7 +26,7 @@ instructions on [the releases page](https://github.com/bazelbuild/rules_jsonnet/
 
 load("@bazel_skylib//lib:paths.bzl", "paths")
 load("@bazel_skylib//lib:shell.bzl", "shell")
-load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive", "http_jar")
 
 _JSONNET_FILETYPE = [
     ".jsonnet",
@@ -894,4 +894,10 @@ def jsonnet_repositories():
         sha256 = "20fdb3599c2325fb11a63860e7580705590faf732abf47ed144203715bd03a70",
         strip_prefix = "go-jsonnet-0d78479d37eabd9451892dd02be2470145b4d4fa",
         urls = ["https://github.com/google/go-jsonnet/archive/0d78479d37eabd9451892dd02be2470145b4d4fa.tar.gz"],
+    )
+
+    http_jar(
+        name = "sjsonnet",
+        url = "https://github.com/databricks/sjsonnet/releases/download/0.4.10/sjsonnet-0.4.10.jar",
+        sha256 = "cca96687e8d79b6df1efc08ac276bc7c61cdab3896b8f8a949b5933d40800eb6",
     )

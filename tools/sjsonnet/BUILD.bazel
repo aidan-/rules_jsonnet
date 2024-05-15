@@ -1,0 +1,7 @@
+java_binary(
+    name = "sjsonnet_bin",
+    create_executable = True,
+    main_class = "sjsonnet.SjsonnetMain",
+    visibility = ["//visibility:public"],
+    runtime_deps = ["@sjsonnet//jar"],
+)
