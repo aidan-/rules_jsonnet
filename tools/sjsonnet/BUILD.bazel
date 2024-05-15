@@ -3,5 +3,5 @@ java_binary(
     create_executable = True,
     main_class = "sjsonnet.SjsonnetMain",
     visibility = ["//visibility:public"],
-    runtime_deps = ["@sjsonnet//jar"],
+    runtime_deps = ["@sjsonnet_0_4_10//jar"],
 )
