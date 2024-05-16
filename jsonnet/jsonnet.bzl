@@ -463,7 +463,7 @@ def _jsonnet_to_json_test_impl(ctx):
             files = test_inputs,
             transitive_files = transitive_data,
             collect_data = True,
-        ),
+        ).merge(ctx.attr.jsonnet[DefaultInfo].default_runfiles),
     )]
 
 _jsonnet_common_attrs = {
@@ -478,7 +478,6 @@ _jsonnet_common_attrs = {
         default = Label("//jsonnet:jsonnet_tool"),
         cfg = "exec",
         executable = True,
-        allow_single_file = True,
     ),
     "deps": attr.label_list(
         doc = "List of targets that are required by the `srcs` Jsonnet files.",
